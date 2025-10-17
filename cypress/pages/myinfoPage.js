@@ -24,13 +24,16 @@ class MyInfoPage {
         cy.get(this.selectorsList().genericField).eq(5).clear().type(driverslicensetest)
         cy.get(this.selectorsList().dateField).eq(1).type(date)  
         cy.get(this.selectorsList().dateCloseButton).click()
-        cy.get(this.selectorsList().submitButton).eq(1).click({force: true})
-        cy.get('body').should('contain', 'Success')
-        cy.get('.oxd-toast-close')
         cy.get(this.selectorsList().genericCombobox).eq(0).click({force: true})
         cy.get(this.selectorsList().selectionNationality).click()
         cy.get(this.selectorsList().genericCombobox).eq(1).click({force: true})
         cy.get(this.selectorsList().selectionMaritalStatus).click()
+    }
+
+    saveForm(){
+        cy.get(this.selectorsList().submitButton).eq(1).click({force: true})
+        cy.get('body').should('contain', 'Success')
+        cy.get('.oxd-toast-close')
     }
     
 }
