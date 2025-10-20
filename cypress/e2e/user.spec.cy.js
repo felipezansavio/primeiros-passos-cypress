@@ -1,5 +1,4 @@
 import userData from '../fixtures/userData.json'
-import myInfoData from '../fixtures/myInfoData.json'
 import LoginPage from '../pages/loginPage.js'
 import DashboardPage from '../pages/dashboardPage.js'
 import MenuPage from '../pages/menuPage.js'
@@ -23,7 +22,7 @@ describe('Orange HMR Tests', () => {
 
     menuPage.acessMyInfo()
 
-    myInfoPage.fillingData(chance.first(), chance.last(), myInfoData.InfosTrue.employee, myInfoData.InfosTrue.othertest, myInfoData.InfosTrue.driverslicensetest, myInfoData.InfosTrue.date)
+    myInfoPage.fillingData(chance.first(), chance.last(), chance.ssn({ dashes: false }), chance.ssn({ dashes: false }), chance.ssn({ dashes: false }), chance.date({string: true, american: true}))
     myInfoPage.saveForm()
 
   })
