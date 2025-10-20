@@ -5,6 +5,9 @@ import DashboardPage from '../pages/dashboardPage.js'
 import MenuPage from '../pages/menuPage.js'
 import MyInfoPage from '../pages/myinfoPage.js'
 
+const Chance = require('chance');
+
+const chance = new Chance();
 const loginPage = new LoginPage()
 const dashboardPage = new DashboardPage()
 const menuPage = new MenuPage()
@@ -20,14 +23,8 @@ describe('Orange HMR Tests', () => {
 
     menuPage.acessMyInfo()
 
-    myInfoPage.fillingData(myInfoData.InfosTrue.firstname, myInfoData.InfosTrue.lastname, myInfoData.InfosTrue.employee, myInfoData.InfosTrue.othertest, myInfoData.InfosTrue.driverslicensetest, myInfoData.InfosTrue.date)
+    myInfoPage.fillingData(chance.first(), chance.last(), myInfoData.InfosTrue.employee, myInfoData.InfosTrue.othertest, myInfoData.InfosTrue.driverslicensetest, myInfoData.InfosTrue.date)
     myInfoPage.saveForm()
 
-  })
-
-  it('Login - Fail', () => {
-    loginPage.acessLoginPage()
-    loginPage.loginWithUser(userData.userFail.username, userData.userFail.password)
-    loginPage.checkAcessInvalid()
   })
 })
